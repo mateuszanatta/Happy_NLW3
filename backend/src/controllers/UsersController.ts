@@ -74,7 +74,7 @@ export default {
             });
 
             if (!user) {
-                return response.status(400).json({ error: "User not found" });
+                return response.status(404).json({ error: "User not found" });
             }
 
             if (!(await user.compareHash(password)))
@@ -86,6 +86,20 @@ export default {
             });
         } catch(error){
             return response.status(400).json({ error: 'User authentication failed'});
+        }
+    },
+
+    async user(request: Request, response: Response){
+        try{
+            const { id } = request.params;
+
+            const usersRepository = getRepository(User);
+
+            const user = await usersRepository.findOne(id);
+
+            return response.json({user: userView.render(user)})
+        }catch(error){
+            return response.status(400).json({error: "Can't get user information"})
         }
     }
 }
