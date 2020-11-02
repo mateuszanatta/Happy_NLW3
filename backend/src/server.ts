@@ -6,7 +6,6 @@ import path from 'path';
 import cors from 'cors';
 
 import errorHandler from './errors/handler';
-import authMiddleware from './middleware/auth';
 
 const app = express();
 

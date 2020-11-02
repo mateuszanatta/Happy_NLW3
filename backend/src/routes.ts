@@ -27,7 +27,10 @@ routes.get('/orphanages', OrphanagesController.index);
 routes.get('/orphanages/:id',OrphanagesController.show);
 
 //users
-routes.post('/users/login', Users.login);
+routes.post('/login', Users.login);
+routes.post('/forgotpassword', Users.forgotPassword);
+routes.post('/resetpassword', Users.resetPassword);
+
 
 /**
  * METHODS THAT NEED AUTH

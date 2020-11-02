@@ -12,6 +12,10 @@ export default class User{
     email: string;
     @Column({nullable: false})
     password: string;
+    @Column({nullable: true})
+    password_reset_token: string;
+    @Column({nullable: true})
+    password_reset_expires: Date;
     
     @BeforeInsert()
     @BeforeUpdate()
