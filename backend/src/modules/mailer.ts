@@ -5,11 +5,11 @@ const hbs = require('nodemailer-express-handlebars');
 export default{
     createEmail(){
         const transport = createTransport({
-            host: "smtp.mailtrap.io",
-            port: 2525,
+            host: process.env.SMTP,
+            port: process.env.MAIL_PORT,
             auth: {
-            user: "17cc16a0d3f0b7",
-            pass: "5f3d2dd0f2ed79"
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
             }
         });
 
