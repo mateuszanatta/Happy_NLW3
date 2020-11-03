@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, AsyncStorage } from 'react-native';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {Feather} from '@expo/vector-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -8,6 +8,7 @@ import { RectButton } from 'react-native-gesture-handler';
 import api from '../Services/api';
 
 import mapMarker from '../images/map-marker.png';
+import styles from '../styles/app';
 
 interface OrphanageItem{
   id: number;
@@ -32,11 +33,11 @@ export default function OrphanagesMap(){
     }
 
     function handleNavigateToCreateOrphanage(){
-      navigation.navigate('SelectMapPosition');
+        navigation.navigate('SelectMapPosition');
     }
     return (
-        <View style={styles.container}>
-        <MapView style={styles.map} 
+        <View style={ styles.container }>
+        <MapView style={ custom.map } 
         provider={PROVIDER_GOOGLE}
         initialRegion={
             {
@@ -63,8 +64,8 @@ export default function OrphanagesMap(){
                       <Callout tooltip={true}
                               onPress={() => handleNavigateToOrphaneDetails(orphanage.id)}
                       >
-                      <View style={styles.calloutContainer}>
-                          <Text style={styles.calloutText}> {orphanage.name}</Text>
+                      <View style={ custom.calloutContainer}>
+                          <Text style={ custom.calloutText}> {orphanage.name}</Text>
                       </View>
                       </Callout>
                   </Marker>
@@ -73,9 +74,9 @@ export default function OrphanagesMap(){
             }
             </MapView>
 
-            <View style={styles.footer}>
-            <Text style={styles.footerText}>{orphanages.length} orfanatos encontrado</Text>
-            <RectButton style={styles.createOrphaneButton} onPress={handleNavigateToCreateOrphanage}>
+            <View style={ custom.footer}>
+            <Text style={ custom.footerText}>{orphanages.length} orfanatos encontrado</Text>
+            <RectButton style={ custom.createOrphaneButton} onPress={handleNavigateToCreateOrphanage}>
                 <Feather name='plus' size={20} color='#ffff' />
             </RectButton>
             </View>
@@ -84,10 +85,7 @@ export default function OrphanagesMap(){
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
+const custom = StyleSheet.create({
   
     map: {
       width: Dimensions.get('window').width,

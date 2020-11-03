@@ -8,7 +8,8 @@ export default {
     async index(request: Request, response:Response){
         const orphanagesRepository = getRepository(Orphanage);
         const orphanages = await orphanagesRepository.find({
-            relations:['images']
+            relations:['images'],
+            where: [{ approved: true}]
         });
 
         return response.json(orphanageView.renderMany(orphanages));
