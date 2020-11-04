@@ -49,6 +49,29 @@ const styles = StyleSheet.create({
       fontSize: 16,
       color: '#FFF',
     },
+    carroOnboarding:{
+      position: 'absolute',
+      width: 30,
+      height: 4,
+      left: '13%',
+      top: '95%',
+    },
+    nextOnboarding: {
+      backgroundColor: '#D1EDF2',
+      borderRadius: 100,
+      position: 'absolute',
+      width: 56,
+      height: 56,
+      left: '75%',
+      top: '90%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    nextOnboardingText: {
+      fontFamily: 'Nunito_800ExtraBold',
+      fontSize: 25,
+      color: '#15B6D6',
+    },
 });
 
 export default styles;
