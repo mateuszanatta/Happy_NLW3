@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, View, Text, Dimensions, AsyncStorage } from 'react-native';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {Feather} from '@expo/vector-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
+import * as Location from 'expo-location';
 
 import api from '../Services/api';
 
@@ -19,10 +20,24 @@ interface OrphanageItem{
 
 export default function OrphanagesMap(){
     const navigation = useNavigation();
-
+    const [location, setLocation] = useState<Location.LocationObject>({coords: {}} as Location.LocationObject);
+    const [erroMsg, setErroMsg] = useState<string>('');
+    
     const [orphanages, setOrphanages] = useState<OrphanageItem[]>([]);
     
-    useFocusEffect(() => {
+    useEffect(() => {
+      (async () => {
+        let { status } = await Location.requestPermissionsAsync();
+        if(status !== 'granted'){
+          setErroMsg('Permission to access was denied');
+        }
+
+        let position = await Location.getCurrentPositionAsync({});
+        setLocation(position);
+      })();
+    }, []);
+    
+    useFocusEffect(() => {     
       api.get('/orphanages').then( response => {
         setOrphanages(response.data);
       })
@@ -36,15 +51,14 @@ export default function OrphanagesMap(){
         navigation.navigate('OnboardingSelectMap');
     }
     return (
-        <View style={ styles.container }>
-        <MapView style={ custom.map } 
+      <View style={ styles.container }>
+        {location.coords.altitude && <MapView style={ custom.map } 
         provider={PROVIDER_GOOGLE}
-        initialRegion={
-            {
-            latitude:-27.850852,
-            longitude:-54.191442,
-            latitudeDelta: 0.008,
-            longitudeDelta: 0.008,
+        initialRegion={{
+            latitude:  location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: 0.009,
+            longitudeDelta: 0.009,
             }} >
             {
               orphanages.map(orphanage => {
@@ -73,6 +87,7 @@ export default function OrphanagesMap(){
               })
             }
             </MapView>
+          }
 
             <View style={ custom.footer}>
             <Text style={ custom.footerText}>{orphanages.length} orfanatos encontrado</Text>
@@ -80,7 +95,7 @@ export default function OrphanagesMap(){
                 <Feather name='plus' size={20} color='#ffff' />
             </RectButton>
             </View>
-        </View>
+      </View>
 
     );
 }
