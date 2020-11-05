@@ -33,7 +33,7 @@ export default function OrphanagesMap(){
     }
 
     function handleNavigateToCreateOrphanage(){
-        navigation.navigate('SelectMapPosition');
+        navigation.navigate('OnboardingSelectMap');
     }
     return (
         <View style={ styles.container }>
