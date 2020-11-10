@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {Feather} from '@expo/vector-icons';
@@ -14,19 +14,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function OnboardingPage(){
     const navigation = useNavigation()
 
-    useEffect(() => {
-        (async () =>{
-            const firstTime = await AsyncStorage.getItem('notFirstTime');
+    // useEffect(() => {
+    //     (async () =>{
+    //         const firstTime = await AsyncStorage.getItem('notFirstTime');
 
-            if(firstTime){
-                navigation.navigate('OrphanagesMap');
-            }
-        })();
-    }, []);
+    //         if(firstTime){
+    //             navigation.navigate('OrphanagesMap');
+    //         }
+    //     })();
+    // }, []);
     
 
     const handleNextOnboarding = async () => {
-        await AsyncStorage.setItem('notFirstTime', 'true');
+        await AsyncStorage.setItem('isFirstTime', 'false');
         navigation.navigate('OrphanagesMap');
     }
     const Square = ({ isLight = true, selected = true }) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, StyleSheet, Dimensions, Text } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -6,16 +6,22 @@ import { RectButton } from 'react-native-gesture-handler';
 import MapView, { MapEvent, Marker } from 'react-native-maps';
 
 import mapMarkerImg from '../../images/map-marker.png';
+import OrphanageContext from '../../Context/orphanage-data-context';
 
 export default function SelectMapPosition() {
   const navigation = useNavigation();
 
   const [position, setPosition] = useState(({latitude: 0, longitude: 0}))
+  let orphanageData = useContext(OrphanageContext);
 
-  function handleNextStep() {
-    navigation.navigate('OrphanageData', { position });
+  function handleNextStep() {    
+    navigation.navigate('OrphanageData', { OrphanageContext });
   }
+  
   function handleSelectMapPostion(event: MapEvent){
+    orphanageData.latitude = String(event.nativeEvent.coordinate.latitude);
+    orphanageData.longitude = String(event.nativeEvent.coordinate.longitude);
+
     setPosition(event.nativeEvent.coordinate);
   }
   return (
