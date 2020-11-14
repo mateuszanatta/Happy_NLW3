@@ -29,6 +29,32 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.8,
         borderBottomColor: '#D3E2E6'
     },
+    pageNumber: {
+      position: 'absolute',
+      top: '5.49%',
+      marginBottom: 0,
+      paddingBottom: 0,
+      fontFamily: 'Nunito_800ExtraBold',
+      fontSize: 12,
+      lineHeight: 22,
+
+      textAlign: 'right',
+      width: '100%',
+      color: 'rgba(92, 133, 153, 1)'
+    },
+    pageNumberInactive: {
+      position: 'absolute',
+      top: '5.49%',
+      marginBottom: 0,
+      paddingBottom: 0,
+      fontFamily: 'Nunito_800ExtraBold',
+      fontSize: 12,
+      lineHeight: 22,
+
+      textAlign: 'right',
+      width: '100%',
+      color: '#rgba(143, 167, 178, 1)'
+    },
     switchContainer: {
       flexDirection: 'row',
       alignItems: 'center',

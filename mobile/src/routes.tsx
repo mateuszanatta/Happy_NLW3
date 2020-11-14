@@ -9,6 +9,7 @@ import OrphanagesMap from './Pages/orphanages-map';
 import OrphanageDetails from './Pages/orphanage-details';
 import SelectMapPosition from './Pages/CreateOrphanage/select-map-position';
 import OrphanageData from './Pages/CreateOrphanage/orphanage-data';
+import OrphanageSchedule from './Pages/CreateOrphanage/orphanage-schedule';
 
 import Header from './Components/header';
 import OrphanageContext from './Context/orphanage-data-context';
@@ -60,7 +61,13 @@ export default function Routes(){
                                 component={OrphanageData} 
                                 options={{
                                     headerShown: true,
-                                    header: () => <Header title="Informe os Dados" />
+                                    header: () => <Header title="Adicione um orfanato" />
+                                }} />
+                        <Screen name='OrphanageSchedule'
+                                component={OrphanageSchedule}
+                                options={{
+                                    headerShown: true,
+                                    header: () => <Header title="Adicione um orfanato" />
                                 }} />
                 </Navigator>
             </OrphanageContext.Provider>

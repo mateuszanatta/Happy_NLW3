@@ -30,6 +30,7 @@ routes.get('/orphanages/:id',OrphanagesController.show);
 routes.post('/login', Users.login);
 routes.post('/forgotpassword', Users.forgotPassword);
 routes.post('/resetpassword', Users.resetPassword);
+routes.post('/orphanages', upload.array('images'), OrphanagesController.create);
 
 
 /**
@@ -38,7 +39,6 @@ routes.post('/resetpassword', Users.resetPassword);
 //authentication
 routes.use(authMiddleware.auth);
 //Orphanages
-routes.post('/orphanages', upload.array('images'), OrphanagesController.create);
 
 //Users
 routes.get('/users', Users.index);
