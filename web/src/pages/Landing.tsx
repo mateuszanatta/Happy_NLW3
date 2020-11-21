@@ -20,6 +20,9 @@ function Landing(){
           <strong>Independência</strong>
           <span>Rio Grande do Sul</span>
         </div>
+        <Link to="/login" className="restrict-app">
+          Acesso Restrito
+        </Link>
         <Link to="/app" className="enter-app">
           <FiArrowRight size={26} color="rgba(0,0,0.6)"></FiArrowRight>
         </Link>
