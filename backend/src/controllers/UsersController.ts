@@ -80,7 +80,7 @@ export default {
             }
 
             if (!(await user.compareHash(password)))
-                return response.status(200).json({ error: 'Invalid password!'});
+                return response.status(400).json({ error: 'Invalid password!'});
             
             return response.json({
                 user: userView.render(user),

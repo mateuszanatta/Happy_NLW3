@@ -110,3 +110,34 @@ form.login-form .input-block label {
   form.login-form button.login-button:hover {
     background: #36CF82;
   }
+
+  .link-forgot-password{
+    position: absolute;
+    font-size: 14px;
+    margin-top: 14px;
+    margin-left: 170px;
+    color: #8FA7B3;
+    text-decoration: none;
+}
+  .link-forgot-password:hover{
+    text-decoration: underline;
+  }
+
+  form.login-form .input-block input[type='checkbox']{
+    width: 15px;
+    height: 15px;
+    margin-top: 4px;
+    margin-right: 8px;
+    background-color: #36CF82;
+  }
+
+  form.login-form .rememberme-block{
+    display: flex;
+    flex-direction: row;
+  }
+
+  form.login-form .rememberme-block .rememberme-label{
+    display: flex;
+    margin-left: 8px;
+    margin-top: 12px;
+  }

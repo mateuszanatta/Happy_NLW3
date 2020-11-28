@@ -11,7 +11,7 @@ import mapIcon from "../utils/mapIcon";
 import api from "../services/api";
 
 export default function CreateOrphanage() {
-const history = useHistory();
+  const history = useHistory();
 
   const [position, setPosition] = useState({latitude:0, longitude:0})
   
@@ -22,6 +22,7 @@ const history = useHistory();
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([])
+
   function handleMapClick(event: LeafletMouseEvent){
     const {lat, lng} = event.latlng;
 
