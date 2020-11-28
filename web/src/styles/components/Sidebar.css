@@ -37,3 +37,24 @@ aside.app-sidebar {
   aside.app-sidebar footer button:hover {
     background: #17D6EB;
   }
+
+
+  .app-sidebar div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-sidebar div button{
+    background: none;
+    border: 0;
+    width: 48px;
+    height: 48px;
+  }
+
+  .app-sidebar div button:hover {
+    cursor: pointer;
+  }
+
+  .app-sidebar div button#upperbutton{
+    margin-bottom: 10px;
+  }
